@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/node_modules/materialize-css/dist/css/materialize.min.css">
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/index.css">
+    <title>Filmes e Series</title>
+</head>
+
+<body>
+   
+    <div class="app  grey lighten-1">
+        <div class="search-container">
+            <div class="row search-content ">
+
+                <div class="input-field col s6 container">
+                    <input id="searchInput" type="text" class="white-text" style="border-bottom-color: white;">
+                    <label class="white-text" for="searchInput">Pesquisar Filmes</label>
+
+                    <div class="buttons-content">
+                        <a id="btnPesquisar" style="margin-bottom: 10px;" class="waves-effect waves-light btn">Pesquisar</a>
+                        <a id="btnDownload" class="waves-effect waves-light btn">Download</a>
+                    </div>
+
+                </div>
+
+                <div class="buttons-content">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cards-container">
+            <div id="cards" class="carousel"></div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="infomodal" class="modal modal-fixed-footer " style="height: 600px;">
+            <div class="modal-content">
+                <img class="poster" id="poster">
+                <table class="table-content">
+                    <tbody>
+                        <tr>
+                            <th>Titulo</th>
+                            <td id="titulo" class="center"></td>
+                        </tr>
+                        <tr>
+                            <th>Enredo</th>
+                            <td id="enredo" class="center"></td>
+                        </tr>
+                        <tr>
+                            <th>Diretor</th>
+                            <td id="diretor" class="center"></td>
+                        </tr>
+                        <tr>
+                            <th>Atores</th>
+                            <td id="atores" class="center"></td>
+                        </tr>
+                        <tr>
+                            <th>Gênero</th>
+                            <td id="genero" class="center"></td>
+                        </tr>
+                        <tr>
+                            <th>Ano de lançamento</th>
+                            <td id="anolancamento" class="center"></td>
+                        </tr>
+                        <tr>
+                            <th>Duração</th>
+                            <td id="duracao" class="center"></td>
+                        </tr>
+                        <tr>
+                            <th>País</th>
+                            <td id="pais" class="center"></td>
+                        </tr>
+                        <tr>
+                            <th>Avaliações</th>
+                            <td id="avaliacoes" class="center"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <a href="#" class="modal-close waves-effect waves-green btn-flat" onclick="destroyModal()">Sair</a>
+            </div>
+        </div>
+
+        <div class="arrow-buttons row">
+            <a onclick="$('.carousel').carousel('prev', 2);" id="arrow1"
+                class="waves-effect waves-light btn row arrow1"><i
+                    class="material-icons left">arrow_back</i>Previous</a>
+            <a id="arrow2" class="waves-effect waves-light btn row arrow2"><i
+                    class="material-icons right">arrow_forward</i>Next</a>
+        </div>
+
+
+        <div class="pagination-container">
+            <ul id="pagination" class="pagination-content"></ul>
+        </div>
+
+        <footer class="footer-content fixed">
+            <p class="white-text"> Made with love <i class="tiny material-icons">favorite</i> &copy AllRights
+                reserved</p>
+        </footer>
+
+
+    </div>
+
+
+    <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

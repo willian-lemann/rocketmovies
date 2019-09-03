@@ -1,0 +1,17 @@
+{
+  "name": "filmes-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.19.0",
+    "jquery": "^3.4.1",
+    "jquery-mask-plugin": "^1.14.16",
+    "materialize-css": "^1.0.0"
+  }
+}
