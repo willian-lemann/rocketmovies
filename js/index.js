@@ -14,13 +14,7 @@ $(document).ready(function () {
     M.updateTextFields();
 });
 
-document.getElementById('arrow1').addEventListener('click', () => {
-    $('.carousel').carousel('prev', 4);
-});
 
-document.getElementById('arrow2').addEventListener('click', () => {
-    $('.carousel').carousel('next', 4);
-});
 
 document.getElementById('btnDownload').addEventListener('click', () => {
     download(`${movieName.value}.csv`, ConvertToCSV(JSON.stringify(jsonContent)));
@@ -50,16 +44,16 @@ let loadPage = (id) => {
 
             let data = res.data.Search;
             jsonContent = data;
-            let element = (id, poster) => {
-                return `<a id="${id}" class="carousel-item" href="#${id}">
+            let element = (id, name, poster) => {
+                return `<a id="${id}" class="carousel-item" href="#${id}"><h6 class="center white-text">${name}</h6>
                 <img class="modal-trigger" href="#infomodal" onclick="loadModal(${id})" onerror="this.src='/assets/warning.svg'" style="width: 300px; height: 370px; border-radius: 10px;"
                  src="${poster}"></a>`;
             }
 
             data.forEach(item => {
 
-                item.Poster == 'N/A' ? set('cards', `${element(item.imdbID, item.Poster)}`) :
-                    set('cards', `${element(item.imdbID, item.Poster)}`);
+                item.Poster == 'N/A' ? set('cards', `${element(item.imdbID, item.Title, item.Poster)}`) :
+                    set('cards', `${element(item.imdbID, item.Title, item.Poster)}`);
 
             });
             carousel();
@@ -119,38 +113,43 @@ let carousel = () => {
         dist: 100,
         noWrap: false,
         duration: 1000,
-        padding: 300,
-        onCycleTo: function (incomingElement) {
+        padding: 300
+        // onCycleTo: function (incomingElement) {
 
-            if (incomingElement.id === lastItem) {
-                document.getElementById('cards').innerHTML = '';
-                pages++;
-                axios.get(`http://www.omdbapi.com/?s=${movieName.value}&apikey=27ec0df9&type=movie&page=${pages}`)
-                    .then((res) => {
+        //     if (lastPage == 1)
+        //         return;
 
-                        let data = res.data.Search;
-                        let element = (id, poster) => {
-                            return `<a id="${id}" class="carousel-item" href="#${id}">
-                        <img class="modal-trigger imagem" href="#infomodal" onclick="loadModal(${id})" onerror="this.src='/assets/warning.svg'" style="width: 300px; height: 370px; border-radius: 10px;"
-                         src="${poster}"></a>`;
-                        }
+        //     if (incomingElement.id === lastItem) {
+        //         document.getElementById('cards').innerHTML = '';
+        //         pages++;
+        //         message(`Você está na pagina ${pages}`, 200, 'rounded');
+        //         Pagination.Start();
+        //         axios.get(`http://www.omdbapi.com/?s=${movieName.value}&apikey=27ec0df9&type=movie&page=${pages}`)
+        //             .then((res) => {
 
-                        data.forEach(item => {
+        //                 let data = res.data.Search;
+        //                 let element = (id, name, poster) => {
+        //                     return `<a id="${id}" class="carousel-item" href="#${id}"><h6 class="center white-text">${name}</h6>
+        //                 <img class="modal-trigger" href="#infomodal imagem" onclick="loadModal(${id})" onerror="this.src='/assets/warning.svg'" style="width: 300px; height: 370px; border-radius: 10px;"
+        //                  src="${poster}"></a>`;
+        //                 }
 
-                            item.Poster == 'N/A' ? set('cards', `${element(item.imdbID, item.Poster)}`) :
-                                set('cards', `${element(item.imdbID, item.Poster)}`);
+        //                 data.forEach(item => {
 
-                        });
-                        carousel();
-                        lastItem = data[data.length - 1].imdbID;
+        //                     item.Poster == 'N/A' ? set('cards', `${element(item.imdbID, item.Title, item.Poster)}`) :
+        //                         set('cards', `${element(item.imdbID, item.Title, item.Poster)}`);
+
+        //                 });
+        //                 carousel();
+        //                 lastItem = data[data.length - 1].imdbID;
 
 
-                    })
-                    .catch((err) => {
-                        console.log(`Erro: ${err}`);
-                    });
-            }
-        }
+        //             })
+        //             .catch((err) => {
+        //                 console.log(`Erro: ${err}`);
+        //             });
+        //     }
+        // }
     });
 }
 
@@ -169,6 +168,7 @@ let getSearch = () => {
         if (e.keyCode === 13) {
 
             validaCampo(movieName.value)
+            message(`${lastPage} resultados para esta pesquisa`, 200, 'rounded');
             index++;
 
             axios.get(`http://www.omdbapi.com/?s=${movieName.value}&apikey=27ec0df9&type=movie`)
@@ -178,17 +178,16 @@ let getSearch = () => {
                     jsonContent = res.data.Search;
                     lastPage = Math.ceil(parseInt(res.data.totalResults) / 10);
 
-
-                    let element = (id, poster) => {
-                        return `<a id="${id}" class="carousel-item" href="#${id}">
-                        <img class="modal-trigger imagem" href="#infomodal" onclick="loadModal(${id})" onerror="this.src='/assets/warning.svg'" style="width: 300px; height: 370px; border-radius: 10px;"
+                    let element = (id, name, poster) => {
+                        return `<a id="${id}" class="carousel-item" href="#${id}"><h6 class="center white-text">${name}</h6>
+                        <img class="modal-trigger responsive-img" href="#infomodal" onclick="loadModal(${id})" onerror="this.src='/assets/warning.svg'" style="width: 300px; height: 370px; border-radius: 10px;"
                          src="${poster}"></a>`;
                     }
 
                     data.forEach(item => {
 
-                        item.Poster == 'N/A' ? set('cards', `${element(item.imdbID, item.Poster)}`) :
-                            set('cards', `${element(item.imdbID, item.Poster)}`);
+                        item.Poster == 'N/A' ? set('cards', `${element(item.imdbID, item.Title, item.Poster)}`) :
+                            set('cards', `${element(item.imdbID, item.Title, item.Poster)}`);
 
                     });
 
@@ -269,7 +268,7 @@ let Pagination = {
 
     // change page
     Click: function () {
-        Pagination.page = +this.innerHTML;
+        pages = +this.innerHTML;
         Pagination.Start();
     },
 
@@ -296,7 +295,7 @@ let Pagination = {
     Bind: function () {
         let a = Pagination.e.getElementsByTagName('a');
         for (let i = 0; i < a.length; i++) {
-            if (+a[i].innerHTML === Pagination.page) a[i].className = 'current';
+            if (+a[i].innerHTML === pages) a[i].className = 'current';
             a[i].addEventListener('click', Pagination.Click, false);
         }
     },
@@ -313,17 +312,17 @@ let Pagination = {
         if (Pagination.size < Pagination.step * 2 + 6) {
             Pagination.Add(1, Pagination.size + 1);
         }
-        else if (Pagination.page < Pagination.step * 2 + 1) {
+        else if (pages < Pagination.step * 2 + 1) {
             Pagination.Add(1, Pagination.step * 2 + 4);
             Pagination.Last();
         }
-        else if (Pagination.page > Pagination.size - Pagination.step * 2) {
+        else if (pages > Pagination.size - Pagination.step * 2) {
             Pagination.First();
             Pagination.Add(Pagination.size - Pagination.step * 2 - 2, Pagination.size + 1);
         }
         else {
             Pagination.First();
-            Pagination.Add(Pagination.page - Pagination.step, Pagination.page + Pagination.step + 1);
+            Pagination.Add(pages - Pagination.step, pages + Pagination.step + 1);
             Pagination.Last();
         }
         Pagination.Finish();

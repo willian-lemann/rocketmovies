@@ -14,24 +14,21 @@
 
 <body>
     
-    <div class="app  grey lighten-1">
+   
+    <div class="app grey darken-4">
         <div class="search-container">
-            <div class="row search-content ">
+            <div class="row search-content">
 
                 <div class="input-field col s6 container">
                     <input id="searchInput" type="text" class="white-text" style="border-bottom-color: white;">
                     <label class="white-text" for="searchInput">Pesquisar Filmes</label>
 
                     <div class="buttons-content">
-                        <a id="btnPesquisar" style="margin-bottom: 10px;" class="waves-effect waves-light btn">Pesquisar</a>
-                        <a id="btnDownload" class="waves-effect waves-light btn">Download</a>
-                    </div>
-
+                        <a id="btnPesquisar" style="margin-bottom: 10px;" class="waves-effect waves-light z-depth-2 deep-purple btn">Pesquisar</a>
+                        <a id="btnDownload" class="waves-effect waves-light z-depth-2 deep-purple btn ">Download</a>
+                    </div> 
                 </div>
-
-                <div class="buttons-content">
-
-                </div>
+ 
             </div>
         </div>
 
@@ -40,9 +37,9 @@
         </div>
 
         <!-- Modal Structure -->
-        <div id="infomodal" class="modal modal-fixed-footer " style="height: 600px;">
+        <div id="infomodal" class="modal modal-fixed-footer">
             <div class="modal-content">
-                <img class="poster" id="poster">
+                <img class="poster responsive-img" id="poster">
                 <table class="table-content">
                     <tbody>
                         <tr>
@@ -84,26 +81,17 @@
                     </tbody>
                 </table>
             </div>
-            <div class="modal-footer">
-                <a href="#" class="modal-close waves-effect waves-green btn-flat" onclick="destroyModal()">Sair</a>
+            <div class="modal-footer" style="background: #7159c1;">
+                <a href="#" class="modal-close waves-effect waves-green btn-flat white-text" onclick="destroyModal()"><h6>Sair</h6></a>
             </div>
         </div>
-
-        <div class="arrow-buttons row">
-            <a onclick="$('.carousel').carousel('prev', 2);" id="arrow1"
-                class="waves-effect waves-light btn row arrow1"><i
-                    class="material-icons left">arrow_back</i>Previous</a>
-            <a id="arrow2" class="waves-effect waves-light btn row arrow2"><i
-                    class="material-icons right">arrow_forward</i>Next</a>
-        </div>
-
-
+  
         <div class="pagination-container">
             <ul id="pagination" class="pagination-content"></ul>
         </div>
 
         <footer class="footer-content fixed">
-            <p class="white-text"> Made with love <i class="tiny material-icons">favorite</i> &copy AllRights
+            <p class="white-text"> Made with love <i class="tiny material-icons materialize-red-text">favorite</i> &copy AllRights
                 reserved</p>
         </footer>
 
