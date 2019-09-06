@@ -159,7 +159,7 @@ let carousel = () => {
         fullWidth: true,
         dist: 100,
         noWrap: false,
-        duration: 1000,
+        duration: 500,
         padding: 300
     });
 }
