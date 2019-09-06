@@ -13,8 +13,8 @@
 </head>
 
 <body>
-    
-   
+
+
     <div class="app grey darken-4">
         <div class="search-container">
             <div class="row search-content">
@@ -24,11 +24,12 @@
                     <label class="white-text" for="searchInput">Pesquisar Filmes</label>
 
                     <div class="buttons-content">
-                        <a id="btnPesquisar" style="margin-bottom: 10px;" class="waves-effect waves-light z-depth-2 deep-purple btn">Pesquisar</a>
+                        <a id="btnPesquisar" style="margin-bottom: 10px;"
+                            class="waves-effect waves-light z-depth-2 deep-purple btn">Pesquisar</a>
                         <a id="btnDownload" class="waves-effect waves-light z-depth-2 deep-purple btn ">Download</a>
-                    </div> 
+                    </div>
                 </div>
- 
+
             </div>
         </div>
 
@@ -36,10 +37,10 @@
             <div id="cards" class="carousel"></div>
         </div>
 
-        <!-- Modal Structure -->
         <div id="infomodal" class="modal modal-fixed-footer">
             <div class="modal-content">
                 <img class="poster responsive-img" id="poster">
+
                 <table class="table-content">
                     <tbody>
                         <tr>
@@ -78,27 +79,32 @@
                             <th>Avaliações</th>
                             <td id="avaliacoes" class="center"></td>
                         </tr>
+                        <tr>
+                            <th></th>
+                            <td id="link" class="center"></td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
             <div class="modal-footer" style="background: #7159c1;">
-                <a href="#" class="modal-close waves-effect waves-green btn-flat white-text" onclick="destroyModal()"><h6>Sair</h6></a>
+                <a href="#" class="modal-close waves-effect waves-green btn-flat white-text" onclick="destroyModal()">
+                    <h6>Sair</h6>
+                </a>
             </div>
         </div>
-  
+
         <div class="pagination-container">
             <ul id="pagination" class="pagination-content"></ul>
         </div>
 
         <footer class="footer-content fixed">
-            <p class="white-text"> Made with love <i class="tiny material-icons materialize-red-text">favorite</i> &copy AllRights
+            <p class="white-text"> Made with love <i class="tiny material-icons materialize-red-text">favorite</i> &copy
+                AllRights
                 reserved</p>
-        </footer>
-
-
+        </footer> 
+        
     </div>
-
-
+ 
     <script src="/node_modules/materialize-css/dist/js/materialize.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/index.js"></script>
