@@ -83,7 +83,7 @@ let loadPage = (id) => {
 
     jsonContent = [];
     document.getElementById('cards').innerHTML = '';
-    axios.get(`http://www.omdbapi.com/?s=${movieName.value}&apikey=27ec0df9&type=movie&page=${id}`)
+    axios.get(`https://www.omdbapi.com/?s=${movieName.value}&apikey=27ec0df9&type=movie&page=${id}`)
         .then((res) => {
 
             let data = res.data.Search;
@@ -110,7 +110,7 @@ let loadPage = (id) => {
 let loadModal = (id) => {
 
     let movieID = id.id;
-    axios.get(`http://www.omdbapi.com/?i=${movieID}&apikey=27ec0df9&type=movie`)
+    axios.get(`https://www.omdbapi.com/?i=${movieID}&apikey=27ec0df9&type=movie`)
         .then((res) => {
 
             let data = res.data;
@@ -169,7 +169,7 @@ let getMovies = () => {
     validaCampo(movieName.value)
     index++;
 
-    axios.get(`http://www.omdbapi.com/?s=${movieName.value}&apikey=27ec0df9&type=movie`)
+    axios.get(`https://www.omdbapi.com/?s=${movieName.value}&apikey=27ec0df9&type=movie`)
         .then((res) => {
 
             let data = res.data.Search;
