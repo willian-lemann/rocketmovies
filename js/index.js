@@ -157,9 +157,9 @@ let carousel = () => {
 
     $('.carousel').carousel({
         fullWidth: true,
-        dist: 100,
+        dist: 10,
         noWrap: false,
-        duration: 100,
+        duration: 500,
         padding: 300
     });
 }
