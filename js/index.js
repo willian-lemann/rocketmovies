@@ -3,13 +3,11 @@ const set = (id, item) => { return document.getElementById(id).innerHTML += item
 const setImage = (id, src) => { return document.getElementById(id).src = src; };
 const movieName = document.getElementById('searchInput');
 let pages = 1;
-let lastItem = '';
 let lastPage = 0;
 let index = 1;
 let jsonContent = [];
 
 $(document).ready(function () {
-    getSearch();
     M.updateTextFields();
 });
 
@@ -27,7 +25,6 @@ document.getElementById('searchInput').addEventListener('keydown', (e) => {
     if (e.keyCode === 8) {
         index = 1;
         pages = 1;
-        lastItem = '';
         document.getElementById('pagination').innerHTML = '';
     }
 
@@ -107,9 +104,9 @@ let loadPage = (id) => {
         });
 }
 
-let loadModal = (id) => {
+let loadModal = (movie) => {
 
-    let movieID = id.id;
+    let movieID = movie.id;
     axios.get(`https://www.omdbapi.com/?i=${movieID}&apikey=27ec0df9&type=movie`)
         .then((res) => {
 
@@ -127,7 +124,7 @@ let loadModal = (id) => {
             setvalue('duracao', `${data.Runtime}`);
             setvalue('pais', `${data.Country}`);
             ratings.forEach(item => {
-                set('avaliacoes', `${item.Source} ${item.Value}`)
+                set('avaliacoes', `${item.Source} ${item.Value}  `)
             });
             setvalue('link', `${siteLink}`);
 
@@ -157,10 +154,10 @@ let carousel = () => {
 
     $('.carousel').carousel({
         fullWidth: true,
-        dist: 10,
+        dist: 100,
         noWrap: false,
         duration: 500,
-        padding: 300
+        padding: 100 
     });
 }
 
@@ -189,10 +186,9 @@ let getMovies = () => {
 
             });
 
-            lastItem = data[data.length - 1].imdbID;
+          
 
             carousel();
-            incre = 1;
             pages = 1;
             init();
 
